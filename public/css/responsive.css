@@ -1,0 +1,34 @@
+/*
+
+Template: Cleanbiz - Responsive HTML5 Template
+Author:Iqonicthemes 
+Design and Developed by: Iqonicthemes
+
+*/
+
+/*==========Navbar responsive css start here ====================*/
+@media screen and (min-width:268px) and (max-width:767px) {
+	.navbar-inverse .navbar-toggle .icon-bar { color: #000 !important; }
+	.navbar-nav { float: left; }
+	.navbar-toggle { background-color: #000; }
+}
+@media screen and (min-width:768) and (max-width:1024px) {
+	.navbar-nav { float: right; }
+}
+
+/*==========Navbar responsive css start here ====================*/
+
+/*==========section title css start here ====================*/
+@media screen and (max-width:767px) {
+	.section-title p { padding: 0px; }
+h1 { font-size: 30px; }
+h2 { font-size: 28px; }
+h3 { font-size: 26px; }
+h4 { font-size: 24px; }
+h5 { font-size: 22px; }
+h6 { font-size: 20px; }
+
+}
+@media screen and (max-width:479px) {
+	.logo img { width: 220px; }
+}
