@@ -7,10 +7,12 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        COVID19 Tracker
+        Coronavirus Live Update
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
+    <meta
+        content="Corona virus live update tracker helps in visualising real time spread of COVID 19 virus across the globe" />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -30,8 +32,7 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="javascript: selectCountry('global')" style="text-decoration: none;"
-                    class="simple-text logo-normal">
+                <a class="simple-text logo-normal">
                     <i class="fas fa-globe text-info"></i> &nbsp; Country List
                 </a>
             </div>
@@ -54,9 +55,15 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand">COVID-19 Tracker</a>
+                        <a href="javascript: selectCountry('global')" class="navbar-brand"><i class="fas fa-home"></i>
+                            &nbsp; Coronavirus COVID-19 Tracker</a>
+                    </div>
+                    <div>
+                        <a href="https://itsjigyasu.me"><img style="align-self: center;" height="40px"
+                                src="./assets/img/logo.png"></a>
                     </div>
                     <!--
+                        Search bar work in progress
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -79,12 +86,6 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <!-- <div class="panel-header panel-header-lg">
-
-  <canvas id="bigDashboardChart"></canvas>
-
-
-</div> -->
             <div class="content">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 text-center">
@@ -111,12 +112,12 @@
                         <div class="card card-stats">
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-2 col-md-2">
+                                    <div class="col-4 col-md-4">
                                         <div class="icon-big text-center icon-warning">
                                             <i class="fas fa-map-marker-alt text-warning"></i>
                                         </div>
                                     </div>
-                                    <div class="col-10 col-md-10">
+                                    <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Location</p>
                                             <p class="card-title" id="location-card">
@@ -133,12 +134,12 @@
                         <div class="card card-stats">
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-5 col-md-4">
+                                    <div class="col-4 col-md-4">
                                         <div class="icon-big text-center icon-warning">
                                             <i class="fas fa-notes-medical text-info"></i>
                                         </div>
                                     </div>
-                                    <div class="col-7 col-md-8">
+                                    <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Cases</p>
                                             <p class="card-title" id="total-cases">
@@ -153,12 +154,12 @@
                         <div class="card card-stats">
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-5 col-md-4">
+                                    <div class="col-4 col-md-4">
                                         <div class="icon-big text-center icon-warning">
                                             <i class="fas fa-skull-crossbones text-danger"></i>
                                         </div>
                                     </div>
-                                    <div class="col-7 col-md-8">
+                                    <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Deaths</p>
                                             <p class="card-title" id="total-deaths">
@@ -173,12 +174,12 @@
                         <div class="card card-stats">
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-5 col-md-4">
+                                    <div class="col-4 col-md-4">
                                         <div class="icon-big text-center icon-warning">
                                             <i class="fas fa-heartbeat text-success"></i>
                                         </div>
                                     </div>
-                                    <div class="col-7 col-md-8">
+                                    <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Recovered</p>
                                             <p class="card-title" id="total-recovered">
@@ -190,88 +191,154 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card ">
                             <div class="card-header ">
-                                <h5 class="card-title">Users Behavior</h5>
-                                <p class="card-category">24 Hours performance</p>
+                                <h5 class="card-title">Reported Cases Stats</h5>
+                                <p class="card-category">Since 22nd January, 2020</p>
                             </div>
                             <div class="card-body ">
-                                <canvas id=chartHours width="400" height="100"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card ">
-                            <div class="card-header ">
-                                <h5 class="card-title">Email Statistics</h5>
-                                <p class="card-category">Last Campaign Performance</p>
-                            </div>
-                            <div class="card-body ">
-                                <canvas id="chartEmail"></canvas>
-                            </div>
-                            <div class="card-footer ">
-                                <div class="legend">
-                                    <i class="fa fa-circle text-primary"></i> Opened
-                                    <i class="fa fa-circle text-warning"></i> Read
-                                    <i class="fa fa-circle text-danger"></i> Deleted
-                                    <i class="fa fa-circle text-gray"></i> Unopened
-                                </div>
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-calendar"></i> Number of emails sent
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h5 class="card-title">NASDAQ: AAPL</h5>
-                                <p class="card-category">Line Chart with Points</p>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="speedChart" width="400" height="100"></canvas>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle text-info"></i> Tesla Model S
-                                    <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                </div>
-                                <hr />
-                                <div class="card-stats">
-                                    <i class="fa fa-check"></i> Data information certified
-                                </div>
+                                <canvas id=chartHours width="400" height="150"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <p>Open for Suggestions related to update. Please </p>
             <footer class="footer footer-black  footer-white ">
                 <div class="container-fluid">
                     <div class="row">
                         <nav class="footer-nav">
                             <ul>
                                 <li>
-                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                                    <a href="#" data-toggle="modal" data-target="#myModal1">About
+                                    </a>
+
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">About</h4>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    This project aims to visualise the live spread of COVID-19 virus aka
+                                                    Nobel Corona Virus, which had led to national epidemic for many
+                                                    country. This projects helps in better visualisation of the
+                                                    spread of the virus as in Real Time.
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                                    <a href="#" data-toggle="modal" data-target="#myModal2">Data Source
+                                    </a>
+
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal2">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Data Source</h4>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    Data sources: <a
+                                                        href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports"
+                                                        target="_blank">WHO</a>, <a
+                                                        href="https://www.cdc.gov/coronavirus/2019-ncov/index.html"
+                                                        target="_blank">CDC</a>, <a
+                                                        href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases"
+                                                        target="_blank">ECDC</a>, <a
+                                                        href="http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml"
+                                                        target="_blank">NHC</a> and
+                                                    <a href="https://3g.dxy.cn/newh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0"
+                                                        target="_blank">DXY</a> and local media reports.
+                                                    <br><br>
+                                                    All the data are collected and maintained by Center for
+                                                    Systems Science and Engineering at Johns Hopkins Whiting School of
+                                                    Engineering.
+                                                    <br><br>
+                                                    Downloadable database: <a
+                                                        href="https://github.com/CSSEGISandData/2019-nCoV"
+                                                        target="_blank">Github</a>, <a
+                                                        href="https://www.arcgis.com/home/item.html?id=c0b356e20b30490c8b8b4c7bb9554e7c"
+                                                        target="_blank">Api</a>
+                                                    <br><br>
+                                                    CSSE's detailed desktop version <a
+                                                        href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"
+                                                        target="_blank">here</a>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                                    <a href="#" data-toggle="modal" data-target="#myModal3">Declaration
+                                    </a>
+
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal3">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Declaration</h4>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    I Jigyasu Prakash here by declare that I am the whole some owner of
+                                                    this project and had made this project with no commercial or profit
+                                                    purpose. This project aims to only visualise the spread of corona
+                                                    virus in real time so that every one would be aware and don't belive
+                                                    in fake news.
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">Source Code</a>
                                 </li>
                             </ul>
                         </nav>
+                        <!-- <img src="https://hitwebcounter.com/counter/counter.php?page=7209530&style=0036&nbdigits=6&type=page&initCount=0" alt="webcounterwebsite"> -->
                         <div class="credits ml-auto">
-                            <span class="copyright">
-                                ©
-                                <script>
-                                    document.write(new Date().getFullYear())
-                                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                            <span class="copyright">Visualization by <a style="color: black;"
+                                    href="https://www.linkedin.com/in/jigyasuprakash/">Jigyasu Prakash
                             </span>
                         </div>
                     </div>
@@ -286,12 +353,11 @@
     <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Chart JS -->
     <script src="./assets/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="./assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="./assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="./assets/demo/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
             // Javascript method's body can be found i asset/assets-for-demo/js/demo.js
@@ -299,6 +365,7 @@
         });
     </script>
     <script src="./js/index.js"></script>
+    <script src="./js/graph.js"></script>
 </body>
 
 </html>

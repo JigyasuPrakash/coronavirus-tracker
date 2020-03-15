@@ -17,7 +17,9 @@ var countryArray = [];
 var globalCases = 0;
 var globalDeath = 0;
 var globalRecover = 0;
-var recentUpdate;
+var lastUpdate = 0;
+var timeElapsed;
+var suffix = '';
 var countryListHTML = ``;
 
 //get data country wise
@@ -46,8 +48,8 @@ $.getJSON('https://services9.arcgis.com/N9p5hsImWXAccRNI/arcgis/rest/services/Z7
                                     </a>
                                 </li>`;
 
-            if (recentUpdate < Number(country.Last_Update)) {
-                recentUpdate = Number(country.Last_Update);
+            if (lastUpdate < country.Last_Update) {
+                lastUpdate = country.Last_Update;
             }
         });
 
@@ -57,9 +59,7 @@ $.getJSON('https://services9.arcgis.com/N9p5hsImWXAccRNI/arcgis/rest/services/Z7
         $('#total-deaths').text(globalDeath);
         $('#total-recovered').text(globalRecover);
         //Time elapsed
-        let elapsed = Date.now -
-            $('#lastUpdate-card').text();
-
+        setLastUpdatedTime(lastUpdate);
         // Country List Elements
         $('#country-list').append(countryListHTML);
     }
@@ -69,11 +69,23 @@ var searchForm = document.querySelector('#search-form');
 if (searchForm != null) {
     searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        console.log("Form data accepted");
+        console.log("Search bar implementation is pending");
     });
 }
 
-
+function setLastUpdatedTime(stamp) {
+    timeElapsed = (new Date() - new Date(stamp)) / (1000);
+    suffix = 'seconds ago';
+    if (timeElapsed >= 60) {
+        timeElapsed = timeElapsed / 60;
+        suffix = 'minutes ago';
+        if (timeElapsed >= 60) {
+            timeElapsed = timeElapsed / 60;
+            suffix = 'hours ago';
+        }
+    }
+    $('#lastUpdate-card').text(Math.floor(timeElapsed) + ' ' + suffix);
+}
 
 function selectCountry(name) {
     if (name == 'global') {
@@ -81,17 +93,13 @@ function selectCountry(name) {
         $('#total-cases').text(globalCases);
         $('#total-deaths').text(globalDeath);
         $('#total-recovered').text(globalRecover);
+        setLastUpdatedTime(lastUpdate);
     } else {
         var searched = countryArray.find(element => element.Country_Region == name)
         $('#location-card').text(searched.Country_Region);
         $('#total-cases').text(searched.Confirmed);
         $('#total-deaths').text(searched.Deaths);
         $('#total-recovered').text(searched.Recovered);
+        setLastUpdatedTime(searched.Last_Update);
     }
 }
-
-
-console.log(Date.now());
-console.log(recentUpdate)
-//Initial Conditions
-
