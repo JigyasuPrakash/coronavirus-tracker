@@ -75,10 +75,10 @@ if (searchForm != null) {
 
 function setLastUpdatedTime(stamp) {
     timeElapsed = (new Date() - new Date(stamp)) / (1000);
-    suffix = 'seconds ago';
+    suffix = 'sec ago';
     if (timeElapsed >= 60) {
         timeElapsed = timeElapsed / 60;
-        suffix = 'minutes ago';
+        suffix = 'min ago';
         if (timeElapsed >= 60) {
             timeElapsed = timeElapsed / 60;
             suffix = 'hours ago';
