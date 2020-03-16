@@ -28,8 +28,6 @@
     <!-- CSS Files -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="./assets/demo/demo.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -109,8 +107,8 @@
                                     <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Last Updated</p>
-                                            <p class="card-title" id="lastUpdate-card">
-                                                <p>
+                                            <div class="card-title" id="lastUpdate-card">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,16 +119,16 @@
                         <div class="card card-stats">
                             <div class="card-body ">
                                 <div class="row">
-                                    <div class="col-4 col-md-4">
+                                    <div class="col-4 col-md-2">
                                         <div class="icon-big text-center icon-warning">
                                             <i class="fas fa-map-marker-alt text-warning"></i>
                                         </div>
                                     </div>
-                                    <div class="col-8 col-md-8">
+                                    <div class="col-8 col-md-10">
                                         <div class="numbers">
                                             <p class="card-category">Location</p>
-                                            <p class="card-title" id="location-card">
-                                                <p>
+                                            <div class="card-title" id="location-card">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -151,8 +149,8 @@
                                     <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Cases</p>
-                                            <p class="card-title" id="total-cases">
-                                                <p>
+                                            <div class="card-title" id="total-cases">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -171,8 +169,8 @@
                                     <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Deaths</p>
-                                            <p class="card-title" id="total-deaths">
-                                                <p>
+                                            <div class="card-title" id="total-deaths">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -191,8 +189,8 @@
                                     <div class="col-8 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Recovered</p>
-                                            <p class="card-title" id="total-recovered">
-                                                <p>
+                                            <div class="card-title" id="total-recovered">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,20 +203,13 @@
                     <div class="col-md-12">
                         <div class="card ">
                             <div class="card-header ">
-                                <h5 class="card-title">Reported Cases Stats</h5>
-                                <p class="card-category">Since 22nd January, 2020</p>
+                                <h5 class="card-title">OverAll Statistics</h5>
+                                <p class="card-category">Since 20th January, 2020</p>
                             </div>
-                            <div class="card-body ">
-                                <canvas id=chartHours width="100%" height="60%"></canvas>
+                            <div class="card-body">
+                                <canvas id=chartHours></canvas>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-11">
-                    <div style="text-align: end;">
-                        Last Updated: 16 March, 2020
                     </div>
                 </div>
             </div>
@@ -352,7 +343,7 @@
                             </ul>
                         </nav>
                         <div class="credits ml-auto">
-                            <span class="copyright">Visualization by <a style="color: black;"
+                            <span class="copyright">Visualization by &nbsp;<a style="color: black; font-size: 16px;"
                                     href="https://www.linkedin.com/in/jigyasuprakash/">Jigyasu Prakash
                             </span>
                         </div>
@@ -363,7 +354,6 @@
     </div>
     <!--   Core JS Files   -->
     <script src="./assets/js/core/jquery.min.js"></script>
-    <script src="./assets/js/core/popper.min.js"></script>
     <script src="./assets/js/core/bootstrap.min.js"></script>
     <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Chart JS -->
@@ -373,12 +363,10 @@
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Javascript method's body can be found i asset/assets-for-demo/js/demo.js
-            demo.initChartsPages();
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"
+        integrity="sha256-wldfwyVJyA71oKe6Sba0fKZkaR6CMwtb0DnWcQs6N1Y=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"
+        integrity="sha256-w49DIDk8itgSjjuoof5lTxYKwcjWJ7Z2sRW3nU1StNA=" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
     <script src="./js/graph.js"></script>
 </body>

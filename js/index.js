@@ -1,16 +1,11 @@
-/** for future use:-
- * 
- *  var where = "Confirmed%20>%200)%20AND%20(Country_Region%3D%27China%27"; 
- *      for specific country complete data
- * 
- *  var global = "Confirmed%20%3E%200"; 
- *      for every country
- * 
+/** for refernce purpose:-
+ *  
  *  $('#country-list'); side nav bar collection
  *  $('#location-card'); Location Card
  *  $('#total-cases'); Total Cases Card
  *  $('#total-deaths'); Total Death Card
  *  $('#total-recovered'); Total Recovered Card
+ * 
 **/
 
 var countryArray = [];
@@ -23,16 +18,19 @@ var suffix = '';
 var countryListHTML = ``;
 
 //get data country wise
-$.getJSON('https://services9.arcgis.com/N9p5hsImWXAccRNI/arcgis/rest/services/Z7biAeD8PAkqgmWhxG2A/FeatureServer/2/query?' +
-    'f=json' +
-    '&where=Confirmed%20%3E%200' +
-    '&returnGeometry=false' +
-    '&spatialRel=esriSpatialRelIntersects' +
-    '&outFields=*' +
-    '&orderByFields=Confirmed%20desc&resultOffset=0' +
-    '&resultRecordCount=200' +
-    '&cacheHint=true',
-    function (response) {
+
+$.ajax({
+    url: 'https://services9.arcgis.com/N9p5hsImWXAccRNI/arcgis/rest/services/Z7biAeD8PAkqgmWhxG2A/FeatureServer/2/query?' +
+        'f=json' +
+        '&where=Confirmed%20%3E%200' +
+        '&returnGeometry=false' +
+        '&spatialRel=esriSpatialRelIntersects' +
+        '&outFields=*' +
+        '&orderByFields=Confirmed%20desc&resultOffset=0' +
+        '&resultRecordCount=200' +
+        '&cacheHint=true',
+    dataType: 'json',
+    success: function (response) {
         Object.keys(response.features).forEach(function (key) {
             countryArray.push(response.features[key].attributes);
         });
@@ -53,17 +51,14 @@ $.getJSON('https://services9.arcgis.com/N9p5hsImWXAccRNI/arcgis/rest/services/Z7
             }
         });
 
-        // Default View
-        $('#location-card').text('Global');
-        $('#total-cases').text(globalCases);
-        $('#total-deaths').text(globalDeath);
-        $('#total-recovered').text(globalRecover);
-        //Time elapsed
-        setLastUpdatedTime(lastUpdate);
+        selectCountry('global');
         // Country List Elements
         $('#country-list').append(countryListHTML);
+    },
+    error: function (error) {
+        alert("Somthing went wrong!! please visit later..");
     }
-);
+});
 
 var searchForm = document.querySelector('#search-form');
 if (searchForm != null) {
@@ -87,6 +82,21 @@ function setLastUpdatedTime(stamp) {
     $('#lastUpdate-card').text(Math.floor(timeElapsed) + ' ' + suffix);
 }
 
+function animateNumbers() {
+    $('#total-cases').counterUp({
+        delay: 10,
+        time: 500
+    });
+    $('#total-deaths').counterUp({
+        delay: 10,
+        time: 500
+    });
+    $('#total-recovered').counterUp({
+        delay: 10,
+        time: 500
+    });
+}
+
 function selectCountry(name) {
     if (name == 'global') {
         $('#location-card').text('Global');
@@ -102,4 +112,6 @@ function selectCountry(name) {
         $('#total-recovered').text(searched.Recovered);
         setLastUpdatedTime(searched.Last_Update);
     }
+    $("#bodyClick").click();
+    animateNumbers();
 }
