@@ -1,5 +1,5 @@
 # COVID19 Tracker
-- Deployed project <a href="https://itsjigyasu.me/coronavirus-live-tracker/">here</a>
+- Deployed project <a href="https://itsjigyasu.me/coronavirus-spread-tracker/">here</a>
 
 <img src="https://img.shields.io/badge/-Javascript-green"> <img src="https://img.shields.io/badge/-ARCGIS API-blue"> <img src="https://img.shields.io/badge/-Chart JS-brown"> 
 [![GitHub issues](https://img.shields.io/github/issues/JigyasuPrakash/coronavirus-live-tracker)](https://github.com/JigyasuPrakash/coronavirus-live-tracker/issues) 
